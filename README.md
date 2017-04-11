@@ -3,7 +3,7 @@ A Python 3.6 Docker image which is capable of talking to MS SQL
 
 This sets up a Python container with freetds, pyodbc and django-pyodbc-azure
 
-See `docker-compose.text.yml` + the `exmaple` Django prject for an example using this with Django.
+See `docker-compose.text.yml` + the `example` Django project for an example using this with Django.
 
 ## Notes:
 
@@ -17,7 +17,7 @@ DATABASES = {
         'PORT':'1433',
         'USER': "sa",
         'PASSWORD': os.environ.get('SA_PASSWORD'),
-        'NAME': os.environ.get('DB_NAME', 'lulu'),
+        'NAME': os.environ.get('DB_NAME'),
         # 'AUTOCOMMIT': True,
         'OPTIONS': {
             "driver": "FreeTDS",
