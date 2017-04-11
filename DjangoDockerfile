@@ -1,0 +1,8 @@
+FROM toast38coza/python-mssql
+RUN mkdir -p /code
+WORKDIR /code
+ADD requirements.txt /code/
+RUN pip install -U pip
+RUN pip install -r requirements.txt
+ADD ./example /code/
+

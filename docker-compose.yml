@@ -1,0 +1,26 @@
+version: "3"
+services:
+  db:
+    restart: on-failure:10
+    image: microsoft/mssql-server-linux:latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=z92kP^fqlRL
+    ports:
+      - "1433:1433"
+  sut:
+    build:
+      context: .
+      dockerfile: DjangoDockerfile
+    command: python manage.py runserver
+    volumes:
+      - ./example:/code
+    links:
+      - db
+    environment:
+      - SA_PASSWORD=z92kP^fqlRL
+      - DB_NAME=mydb
+    ports:
+      - '8000:8000'
+
+# docker exec -it beca19d3c198 /bin/bash /opt/mssql-tools/bin/sqlcmd -S localhost -U sa
